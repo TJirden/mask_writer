@@ -64,6 +64,9 @@ public slots:
             }
 
             quint64 *data = reinterpret_cast<quint64 *>(buffer);
+            if (bytes_read % 8 != 0){
+                bytes_read += 8;
+            }
             size_t count = bytes_read / sizeof(quint64);
             for (size_t i = 0; i < count; i++) {
                 data[i] ^= xorValue;
